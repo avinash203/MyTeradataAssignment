@@ -1,0 +1,66 @@
+C:\Users\avinash\Documents\GitHub>cd teraproj
+
+C:\Users\avinash\Documents\GitHub\teraproj>Git init
+Reinitialized existing Git repository in C:/Users/avinash/Documents/GitHub/terap
+roj/.git/
+
+C:\Users\avinash\Documents\GitHub\teraproj>git checkout -b testproj
+Switched to a new branch 'testproj'
+
+
+C:\Users\avinash\Documents\GitHub\teraproj>git config --get remote.origin.url
+https://github.com/avinash203/Guts.git
+
+C:\Users\avinash\Documents\GitHub\teraproj>git remote show origin
+* remote origin
+  Fetch URL: https://github.com/avinash203/Guts.git
+  Push  URL: https://github.com/avinash203/Guts.git
+  HEAD branch: master
+  Remote branch:
+    master tracked
+  Local branches configured for 'git pull':
+    Child-one merges with remote Child-one
+    master    merges with remote master
+  Local ref configured for 'git push':
+    master pushes to master (up to date)
+
+C:\Users\avinash\Documents\GitHub\teraproj>git diff
+
+C:\Users\avinash\Documents\GitHub\teraproj>git checkout -b testproj
+C:\Users\avinash\Documents\GitHub\teraproj>git push -u origin master
+
+C:\Users\avinash\Documents\GitHub\teraproj>git branch
+  Child-one
+  master
+* testproj
+
+C:\Users\avinash\Documents\GitHub\teraproj>git status
+On branch testproj
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   abc.sh
+        modified:   proj1.py
+        modified:   test.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+C:\Users\avinash\Documents\GitHub\teraproj>git add .
+
+C:\Users\avinash\Documents\GitHub\teraproj>git commit -am "adding spaces to file"
+
+[testproj de5ea28] adding spaces to file
+ 3 files changed, 3 insertions(+), 2 deletions(-)
+
+C:\Users\avinash\Documents\GitHub\teraproj>  git push origin testproj
+Counting objects: 5, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (5/5), 452 bytes | 0 bytes/s, done.
+Total 5 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/avinash203/Guts.git
+ * [new branch]      testproj -> testproj
+
+C:\Users\avinash\Documents\GitHub\teraproj>

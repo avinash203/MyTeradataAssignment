@@ -1,0 +1,1 @@
+ cat /opt/test.txt | cut -f1 -d:

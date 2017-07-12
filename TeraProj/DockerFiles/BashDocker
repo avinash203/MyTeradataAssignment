@@ -1,0 +1,18 @@
+# BEGIN DOCKERFILE CONTENTS #
+# This docker file executes bash script
+
+FROM bash:4.4
+MAINTAINER Avinash G "nashg203@gmail.com"
+
+COPY proj1.sh /
+
+CMD ["bash", "/proj1.sh"]
+
+# Run below commands to test
+
+# END DOCKERFILE CONTENTS #
+
+
+#$ docker build -t my-bash-script .
+
+#$ docker run -it --rm --name my-running-app my-bash-script

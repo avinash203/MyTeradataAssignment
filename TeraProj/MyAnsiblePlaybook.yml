@@ -1,0 +1,18 @@
+# playbook.yml
+---
+- hosts: ${target}
+  user: test_user
+  sudo: yes
+
+  tasks:
+  - name: Copy file
+    copy: src=../proj1.py dest=/opt/test_user  mode=755
+
+  - name: Execute script
+    command: /opt/proj1.py
+
+  - name: Transfer the script
+    copy: src=proj1.sh dest=/home/test_user mode=755
+
+  - name: Execute the script
+    command: sh /home/test_user/proj1.sh

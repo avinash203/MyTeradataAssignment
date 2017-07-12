@@ -1,0 +1,48 @@
+#!groovy
+
+podTemplate( label: 'TeraData Assignment',
+  containers: [
+        containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true)
+
+]) {
+
+    node ('TeraData Assignment') {
+	
+	 git branch: teraProj, credentialsId: 'None', url: 'https://github.com/avinash203/Guts.git'
+
+       stage('Dockerfile build') {
+            container('docker') {
+
+                sh "docker build -t  my-python-script 'https://github.com/avinash203/Guts.git:teraProj' -f ../DockerFiles/PythonDocker ."
+                sh "docker build -t  my-bash-script 'https://github.com/avinash203/Guts.git:teraProj' -f ../DockerFiles/BashDocker ."                
+		
+            }
+        }
+       
+       stage('Dockerfile  tag ') {
+            container('docker') {
+  
+                sh "docker tag my-python-script http://teraproj.s3-website-us-east-1.amazonaws.com/aviguts/my-python-script"
+                sh "docker tag my-bash-script http://teraproj.s3-website-us-east-1.amazonaws.com/aviguts/my-bash-script"
+            }
+        }
+
+       stage('Dockerfile  push') {
+            container('docker') {
+
+                sh "docker push my-python-script http://teraproj.s3-website-us-east-1.amazonaws.com/aviguts/my-python-script"
+                sh "docker push my-bash-script http://teraproj.s3-website-us-east-1.amazonaws.com/aviguts/my-bash-script"
+
+            }
+        }
+	
+   
+        stage('Dockerfile run') {
+            container('docker') {
+                sh "docker run -it --rm --name my-python-app http://teraproj.s3-website-us-east-1.amazonaws.com/aviguts/my-python-script"
+                sh "docker run -it --rm --name my-bash-app http://teraproj.s3-website-us-east-1.amazonaws.com/aviguts/my-bash-script"
+            }
+        }
+
+    }
+}
